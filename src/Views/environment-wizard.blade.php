@@ -37,17 +37,17 @@
             <div class="tab" id="tab1content">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <div class="form-group {{ $errors->has('app_name') ? ' has-error ' : '' }}">
+                <div class="form-group @isset($errors->has('app_name')){{ $errors->has('app_name') ? ' has-error ' : '' }}@isset">
                     <label for="app_name">
                         {{ trans('installer_messages.environment.wizard.form.app_name_label') }}
                     </label>
                     <input type="text" name="app_name" id="app_name" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.app_name_placeholder') }}" />
-                    @if ($errors->has('app_name'))
+                    @isset ($errors->has('app_name'))
                         <span class="error-block">
                             <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
                             {{ $errors->first('app_name') }}
                         </span>
-                    @endif
+                    @isset
                 </div>
 
                 <div class="form-group {{ $errors->has('environment') ? ' has-error ' : '' }}">
